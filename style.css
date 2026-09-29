@@ -581,16 +581,66 @@ body {
 
 .role-main {
   font-size: 1.65rem;
-  font-weight: 400;
-  color: var(--text-primary);
+  font-weight: 500;
+  color: var(--text-bright);
   letter-spacing: -0.01em;
 }
 
 .role-sub {
-  font-size: 1.65rem;
+  font-size: 1.25rem;
   font-weight: 400;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+  opacity: 0.9;
+}
+
+.role-tagline {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-cta-btn.primary {
+  background: var(--accent-lime);
+  color: var(--text-dark);
+  box-shadow: 0 4px 15px rgba(246, 255, 147, 0.25);
+}
+
+.hero-cta-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(246, 255, 147, 0.4);
+}
+
+.hero-cta-btn.secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-cta-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -1374,24 +1424,25 @@ body {
 
 .project-modal-slider {
   width: 100%;
-  height: 400%;
+  height: 600%;
   position: relative;
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 .modal-slide {
   width: 100%;
-  height: 25%;
+  height: 16.6666%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .modal-slide img {
-  width: 90%;
-  height: auto;
-  max-height: 90%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* Floating "View" Cursor Badge */
@@ -1500,6 +1551,8 @@ body {
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  text-decoration: none;
+  position: relative;
 }
 
 .gallery-card:hover {
@@ -1508,25 +1561,72 @@ body {
 }
 
 .card-inner {
-  width: 82%;
-  height: 82%;
+  width: 90%;
+  height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 8px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 .card-inner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .gallery-card:hover .card-inner img {
   transform: scale(1.06);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 12, 14, 0.94) 0%, rgba(12, 12, 14, 0.55) 45%, rgba(12, 12, 14, 0.15) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem 1.4rem;
+  opacity: 0;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 8px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.gallery-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-lime);
+  margin-bottom: 0.25rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.45rem;
+  line-height: 1.2;
+}
+
+.card-action {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #d1d5db;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 /* ==========================================================================
@@ -2427,5 +2527,212 @@ body {
   .footer-giant-title {
     font-size: clamp(6.5rem, 25vw, 12rem);
     margin-left: -0.5rem;
+  }
+}
+
+/* ==========================================================================
+   BENJAMÍN CENOZ — PORTFOLIO ENHANCEMENTS
+   ========================================================================== */
+.project-title-group {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
+.project-num {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  opacity: 0.55;
+}
+
+.project-meta-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.project-link-badge {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent-lime);
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.project-row:hover .project-link-badge {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.builds-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.build-pill {
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  transition: all 0.3s ease;
+}
+
+.build-pill:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(246, 255, 147, 0.3);
+  transform: translateY(-2px);
+  color: var(--text-bright);
+}
+
+.tech-stack-container {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.tech-stack-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.tech-stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tech-badge {
+  padding: 0.5rem 1.15rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: all 0.25s ease;
+}
+
+.tech-badge:hover {
+  border-color: var(--accent-lime);
+  color: var(--accent-lime);
+  background: rgba(246, 255, 147, 0.06);
+}
+
+.tech-badge.ai-badge {
+  border-color: rgba(246, 255, 147, 0.2);
+  color: var(--text-bright);
+}
+
+.education-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.2rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.education-pill strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.education-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+}
+
+/* About Section */
+.about-section {
+  position: relative;
+  width: 100%;
+  padding: 130px 0 110px;
+  background-color: var(--bg-dark);
+}
+
+.about-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 4.5rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-section-tag {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-lime);
+  font-weight: 600;
+}
+
+.about-main-headline {
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-bright);
+}
+
+.about-bio-text {
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  line-height: 1.7;
+  color: var(--text-primary);
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .about-container {
+    padding: 0 2.5rem;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 80px 0 90px;
+  }
+  .about-container {
+    padding: 0 1.4rem;
   }
 }

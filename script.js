@@ -1,5 +1,5 @@
 /**
- * Luca Uriel García — Portfolio Scripts
+ * Benjamín Cenoz — Portfolio Scripts
  * Interactions, Menu Toggle, Marquee and Subtle Parallax Effects
  */
 
@@ -69,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (quickHireBtn) {
     quickHireBtn.addEventListener('click', () => toggleHireModal(true));
+  }
+
+  const footerContactBtn = document.getElementById('footerContactBtn');
+  if (footerContactBtn) {
+    footerContactBtn.addEventListener('click', () => toggleHireModal(true));
   }
 
   if (modalClose) {
@@ -231,7 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
       row.addEventListener('mouseenter', () => {
         const index = parseInt(row.getAttribute('data-index') || '0', 10);
         if (modalSlider) {
-          modalSlider.style.transform = `translateY(-${index * 25}%)`;
+          const totalRows = projectRows.length || 6;
+          modalSlider.style.transform = `translateY(-${index * (100 / totalRows)}%)`;
         }
         projectModal.classList.add('active');
         projectCursorBadge.classList.add('active');
