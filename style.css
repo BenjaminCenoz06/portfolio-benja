@@ -42,7 +42,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-primary);
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow-x: hidden;
   position: relative;
   -webkit-font-smoothing: antialiased;
@@ -365,7 +365,7 @@ body {
    ========================================================================== */
 .hero-section {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   min-height: 700px;
   overflow: hidden;
@@ -2669,7 +2669,7 @@ body {
   position: relative;
   width: 100%;
   padding: 130px 0 110px;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-color);
 }
 
 .about-container {
@@ -2735,3 +2735,128 @@ body {
     padding: 0 1.4rem;
   }
 }
+
+/* ==========================================================================
+   RESPONSIVE POLISH
+   ========================================================================== */
+html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+img { max-width: 100%; }
+.footer-socials-row { flex-wrap: wrap; }
+.footer-pill-link span { overflow-wrap: anywhere; }
+.nav-drawer { height: 100vh; height: 100dvh; }
+.hero-section { height: 100vh; height: 100svh; }
+
+/* Touch devices: no hover, so show affordances permanently */
+@media (hover: none) {
+  .project-link-badge { opacity: 1; transform: none; }
+  .card-overlay { opacity: 1; background: linear-gradient(to top, rgba(12,12,14,.85) 0%, rgba(12,12,14,0) 55%); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .gallery-card:hover, .project-row:hover .project-name, .project-row:hover .project-role { transform: none; }
+  .hero-portrait { filter: grayscale(0%) contrast(104%) brightness(103%); }
+}
+
+/* Small laptops / tablets landscape */
+@media (max-width: 1100px) and (min-width: 769px) {
+  .hero-role-info { right: 3%; max-width: 280px; }
+  .role-sub { font-size: 1.1rem; }
+  .project-meta-group { gap: 1rem; }
+  .project-role { font-size: 1rem; }
+  .project-name { font-size: clamp(2.4rem, 5.2vw, 4rem); }
+}
+
+@media (max-width: 1024px) {
+  .accordion-title { font-size: clamp(2.2rem, 7vw, 4rem); }
+  .services-title { font-size: clamp(3rem, 11vw, 6rem); }
+  .footer-contact-circle { right: 4%; }
+  .footer-bottom-meta { flex-wrap: wrap; gap: .5rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-section { min-height: 620px; }
+  .hero-role-info { max-width: 62%; left: auto; gap: .6rem; }
+  .role-labels { align-items: flex-end; }
+  .role-sub { font-size: .95rem; }
+  .role-tagline { font-size: .85rem; }
+  .hero-cta-group { justify-content: flex-end; flex-wrap: wrap; margin-top: .6rem; }
+  .hero-cta-btn { padding: .5rem 1rem; font-size: .82rem; }
+  .location-badge { bottom: 7.5rem; }
+  .badge-text .city-name { font-size: 1rem; }
+  .badge-text span { font-size: .78rem; }
+  .menu-btn { height: 40px; min-width: 100px; }
+  .accordion-title { font-size: clamp(1.9rem, 8.5vw, 3rem); padding-right: 1rem; }
+  .accordion-item.active .accordion-panel { max-height: 700px; }
+  .accordion-panel-inner { padding-bottom: 2.4rem; }
+  .project-meta-group { flex-direction: column; align-items: flex-start; gap: .4rem; }
+  .project-role { font-size: 1rem; }
+  .project-link-badge { opacity: 1; transform: none; }
+  .projects-tag { font-size: .8rem; line-height: 1.5; }
+  .brand-item { gap: .7rem; }
+  .brand-item-name { font-size: 1.05rem; white-space: normal; }
+  .brands-grid { justify-items: start; }
+  .brand-item { justify-content: flex-start; }
+  .about-section-tag { font-size: .85rem; }
+  .about-main-headline { font-size: 1.8rem; }
+  .education-pill { flex-wrap: wrap; }
+  .modal-overlay { padding: 1rem; align-items: flex-end; }
+  .modal-card { padding: 1.8rem 1.3rem 1.5rem; border-radius: 20px; max-height: 92vh; max-height: 92dvh; overflow-y: auto; }
+  .modal-header h3 { font-size: 1.3rem; padding-right: 1.5rem; }
+  .form-group input, .form-group textarea { font-size: 16px; } /* prevents iOS zoom */
+  .footer-hero-row { flex-direction: column; }
+  .footer-contact-links { width: 100%; }
+  .nav-links { gap: 1rem; margin: 2rem 0; }
+  .nav-link { font-size: 2rem; }
+  .nav-footer { gap: 1.2rem; }
+}
+
+@media (max-width: 400px) {
+  .site-header { padding: 1rem; }
+  .hero-role-info { right: 1rem; max-width: 68%; }
+  .role-main { font-size: 1rem; }
+  .role-sub { font-size: .85rem; }
+  .location-badge { bottom: 6.5rem; }
+  .badge-content { padding: .5rem .7rem .5rem 1.1rem; gap: .6rem; }
+  .project-name { font-size: 2.1rem; }
+  .brand-item-name { font-size: .95rem; }
+  .brand-icon-wrap { width: 26px; height: 26px; }
+  .brand-icon-wrap svg { width: 24px; height: 24px; }
+  .footer-giant-title { font-size: 6rem; }
+  .nav-drawer-content { padding: 5rem 1.4rem 2rem; }
+  .nav-link { font-size: 1.75rem; gap: .8rem; }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-section { min-height: 520px; }
+  .hero-portrait { height: 78vh; }
+}
+
+@media (max-width: 768px) {
+  .footer-divider-wrapper { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .footer-contact-circle { flex: 0 0 auto; align-self: center; margin: 1rem auto 0; aspect-ratio: 1 / 1; }
+}
+
+/* Floating CTA hides while the footer is on screen */
+.quick-hire-badge { transition: opacity .3s ease, transform .3s ease; }
+.quick-hire-badge.is-hidden { opacity: 0; pointer-events: none; transform: translate(-50%, 20px); }
+
+/* Header gets a soft backdrop once the page scrolls */
+.site-header { transition: background .3s ease, padding .3s ease, backdrop-filter .3s ease; }
+.site-header.is-scrolled {
+  background: rgba(0, 0, 0, 0.72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Tablet portrait: keep text off the portrait */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-role-info { top: 7rem; right: 2rem; transform: none; align-items: flex-end; text-align: right; max-width: 360px; }
+  .role-arrow { display: none; }
+  .role-labels { align-items: flex-end; }
+  .hero-cta-group { justify-content: flex-end; }
+  .location-badge { top: auto; bottom: 9rem; transform: none; }
+}
+
+/* Instagram glyph is outline-based: don't fill it */
+.footer-social-btn svg.icon-instagram { fill: none; stroke: var(--text-dark); }
+.footer-social-btn svg { width: 22px; height: 22px; }

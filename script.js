@@ -88,6 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Hire form -> opens WhatsApp with the message prefilled
+  const hireForm = document.getElementById('hireForm');
+  if (hireForm) {
+    hireForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(hireForm);
+      const text = `Hola Benjamín, soy ${data.get('name')} (${data.get('contact')}).\n\n${data.get('message')}`;
+      window.open(`https://wa.me/5493786403914?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      hireForm.reset();
+      toggleHireModal(false);
+    });
+  }
+
   // Escape key closes modals and menu
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -362,11 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ===================================================
      11. FOOTER CONTACT BUTTON & LIVE GMT CLOCK
   =================================================== */
-  const footerContactBtn = document.getElementById('footerContactBtn');
-  if (footerContactBtn) {
-    footerContactBtn.addEventListener('click', () => toggleHireModal(true));
-  }
-
   function updateFooterGmtTime() {
     const gmtEl = document.getElementById('footerGmtTime');
     if (!gmtEl) return;
@@ -382,3 +390,22 @@ document.addEventListener('DOMContentLoaded', () => {
   updateFooterGmtTime();
   setInterval(updateFooterGmtTime, 1000);
 });
+
+// Hide the floating "Hablemos" pill while the footer is visible
+(() => {
+  const badge = document.querySelector('.quick-hire-badge');
+  const footer = document.getElementById('contact');
+  if (!badge || !footer || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(([entry]) => {
+    badge.classList.toggle('is-hidden', entry.isIntersecting);
+  }, { threshold: 0.15 }).observe(footer);
+})();
+
+// Header backdrop on scroll
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const update = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
